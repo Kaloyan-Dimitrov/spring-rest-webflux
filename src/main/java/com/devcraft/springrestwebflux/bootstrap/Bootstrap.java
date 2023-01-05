@@ -27,20 +27,11 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadCategories() {
         // make five unique categories variables
-        Category fruits = new Category();
-        fruits.setDescription("Fruits");
-
-        Category dried = new Category();
-        dried.setDescription("Dried");
-
-        Category fresh = new Category();
-        fresh.setDescription("Fresh");
-
-        Category exotic = new Category();
-        exotic.setDescription("Exotic");
-
-        Category nuts = new Category();
-        nuts.setDescription("Nuts");
+        Category fruits = Category.builder().description("Fruits").build();
+        Category dried = Category.builder().description("Dried").build();
+        Category fresh = Category.builder().description("Fresh").build();
+        Category exotic = Category.builder().description("Exotic").build();
+        Category nuts = Category.builder().description("Nuts").build();
 
         // save the categories to the database
         categoryRepository.deleteAll()
@@ -52,25 +43,11 @@ public class Bootstrap implements CommandLineRunner {
     }
 
     private void loadVendors() {
-        Vendor vendor1 = new Vendor();
-        vendor1.setFirstName("Joe");
-        vendor1.setLastName("Buck");
-
-        Vendor vendor2 = new Vendor();
-        vendor2.setFirstName("Michael");
-        vendor2.setLastName("Weston");
-
-        Vendor vendor3 = new Vendor();
-        vendor3.setFirstName("Jessie");
-        vendor3.setLastName("Waters");
-
-        Vendor vendor4 = new Vendor();
-        vendor4.setFirstName("Bill");
-        vendor4.setLastName("Nershi");
-
-        Vendor vendor5 = new Vendor();
-        vendor5.setFirstName("Jimmy");
-        vendor5.setLastName("Buffet");
+        Vendor vendor1 = Vendor.builder().firstName("Joe").lastName("Buck").build();
+        Vendor vendor2 = Vendor.builder().firstName("Michael").lastName("Weston").build();
+        Vendor vendor3 = Vendor.builder().firstName("Jessie").lastName("Waters").build();
+        Vendor vendor4 = Vendor.builder().firstName("Bill").lastName("Nershi").build();
+        Vendor vendor5 = Vendor.builder().firstName("Jimmy").lastName("Buffet").build();
 
         vendorRepository.deleteAll()
                 .thenMany(Flux.just(vendor1, vendor2, vendor3, vendor4, vendor5)
